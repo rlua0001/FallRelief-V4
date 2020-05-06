@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a02663b86a554d96b69f7f55aad1aff9" Name="Diagram1">
+        <EntityTypeShape EntityType="fall_reliefModel.tbl_RiskAss_Assessment" Width="3.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="fall_reliefModel.tbl_RiskAss_Session" Width="1.875" PointX="8.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="fall_reliefModel.tbl_RiskAss_Questions" Width="3" PointX="5.75" PointY="5" />
+        <EntityTypeShape EntityType="fall_reliefModel.tbl_RiskAss_AssQuestion" Width="2.25" PointX="1.75" PointY="4.5" />
+        <AssociationConnector Association="fall_reliefModel.FK__tbl_RiskA__Asses__151B244E" />
+        <AssociationConnector Association="fall_reliefModel.FK__tbl_RiskA__Quest__18EBB532" />
+        <AssociationConnector Association="fall_reliefModel.FK__tbl_RiskA__Asses__19DFD96B" />
+        <EntityTypeShape EntityType="fall_reliefModel.tbl_RiskAss_ResponseChoice" Width="2.125" PointX="9.625" PointY="3.625" />
+        <AssociationConnector Association="fall_reliefModel.FK__Risk_Ass___Quest__1CBC4616" />
+        <EntityTypeShape EntityType="fall_reliefModel.tbl_RiskAss_AssessmentResponse" Width="2.5" PointX="5.125" PointY="1.5" />
+        <AssociationConnector Association="fall_reliefModel.FK__tbl_RiskA__Asses__339FAB6E" />
+        <AssociationConnector Association="fall_reliefModel.FK__tbl_RiskA__AssQu__3493CFA7" />
+        <AssociationConnector Association="fall_reliefModel.FK__tbl_RiskA__respo__3587F3E0" />
+        <EntityTypeShape EntityType="fall_reliefModel.tbl_ActionPlan_HomeSafety" Width="1.5" PointX="9.625" PointY="11.75" />
+        <EntityTypeShape EntityType="fall_reliefModel.tbl_ActionPlan_Nutrition" Width="2.5" PointX="8.375" PointY="15.125" />
+        <EntityTypeShape EntityType="fall_reliefModel.tbl_ActionPlan_RiskStatement" Width="1.5" PointX="9.625" PointY="9" />
+        <EntityTypeShape EntityType="fall_reliefModel.tbl_RiskAss_RiskLevel" Width="1.5" PointX="0.625" PointY="12.25" />
+        <AssociationConnector Association="fall_reliefModel.FK__tbl_Actio__Quest__540C7B00" />
+        <AssociationConnector Association="fall_reliefModel.FK__tbl_Actio__Quest__55009F39" />
+        <AssociationConnector Association="fall_reliefModel.FK__tbl_Actio__Quest__40058253" />
+        <AssociationConnector Association="fall_reliefModel.FK__tbl_RiskA__Asses__42E1EEFE" />
+        <EntityTypeShape EntityType="fall_reliefModel.tbl_ActionPlan_FoodNutrient" Width="1.5" PointX="15.125" PointY="4.5" />
+        <EntityTypeShape EntityType="fall_reliefModel.tbl_ActionPlan_Nutrient" Width="1.5" PointX="12.125" PointY="13.625" />
+        <AssociationConnector Association="fall_reliefModel.FK__tbl_Actio__Nutri__5AB9788F" />
+        <AssociationConnector Association="fall_reliefModel.FK__tbl_Actio__Nutri__58D1301D" />
+        <EntityTypeShape EntityType="fall_reliefModel.vw_ActionPlan_HomeSafety" Width="1.5" PointX="2.75" PointY="8.375" />
+        <EntityTypeShape EntityType="fall_reliefModel.vw_ActionPlan_Nutrition" Width="1.5" PointX="4.25" PointY="11.5" />
+        <EntityTypeShape EntityType="fall_reliefModel.vw_RiskAss_RiskLevel" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="fall_reliefModel.vw_RiskAss_RiskStatement" Width="1.5" PointX="12.75" PointY="3.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

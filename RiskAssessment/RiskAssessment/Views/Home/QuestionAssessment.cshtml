@@ -1,0 +1,98 @@
+﻿@model RiskAssessment.Models.QuestionModel
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="Question-section">@(Model.QuestionSection)</div>
+        <div class="Question-number">Question :@(Model.QuestionNumber)</div>
+    </div>
+</div>
+
+@{ var totalQuestion = Model.TotalQuestionNo;}
+
+@using (Html.BeginForm("PostAnswer", "Home", FormMethod.Post, new { @id = "form" }))
+{
+    @Html.Hidden("Direction", "forward")
+    <input type="hidden" name="SessionID" value="@(Session["SessionID"])" />
+    <input type="hidden" name="AssessmentTypeID" value="@(Model.AssessmentTypeID)" />
+    <input type="hidden" name="QuestionID" value="@(Model.QuestionNumber)" />
+
+    <div class="row">
+        <div class="col-md-10">
+            <table>
+                <tr>
+                    <td><a href="javascript:void(0);" class="btn btn-primary" onclick="saveBackward(this);">|<< Save & Previous</a></td>
+                    <td><a href="@Url.Action("QuestionAssessment", new {@SessionID= Session["SessionID"], @AssID = Session["AssessmentTypeID"], @qno = (Model.QuestionNumber > 1 ? Model.QuestionNumber -1 : 1)})" class="btn btn-default">|<< Previous</a></td>
+
+
+                    @for (int i = 0; i < totalQuestion; i++)
+                    {
+                        <td><a href="@Url.Action("QuestionAssessment","Home",new { @SessionID = Session["SessionID"],@AssID = Session["AssessmentTypeID"], @qno = (i + 1) })" class="btn @(Model.QuestionNumber == (i + 1) ? "btn-primary": "btn-default")">@(i + 1)</a></td>
+                    }
+
+                    <td><a href="@Url.Action("QuestionAssessment", new {@SessionID= Session["SessionID"], @AssID = Session["AssessmentTypeID"], @qno = (Model.QuestionNumber < (totalQuestion - 1) ? Model.QuestionNumber + 1 : 1)})" class="btn btn-default">Next >>|</a></td>
+                    <td><a href="javascript:void(0);" class="btn btn-primary" onclick="saveForward(this);">Save & Next >>|</a></td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+
+        @if (Model.QuestionType == "Radio")
+        {
+            <ul class="js_choices">
+
+                @Html.Raw(Model.Question ?? "")
+
+                @for (int i = 0; i < Model.Options.Count; i++)
+                {
+                    <li>
+                        <input type="hidden" name="UserReponse[@i].ResponseID" value="@(Model.Options[i].ResponseID)" />
+                        <input type="radio" name="UserReponse[@i].IsChecked" @(!string.IsNullOrEmpty(Model.Options[i].Answer) ? "CHECKED" : "") />
+                        <span class="Code">@Html.Raw(Model.Options[i].Response.Replace("[", "&lt;").Replace("]", "gt;"))</span>
+                    </li>
+                }
+            </ul>
+
+            <input type="hidden" name="Answer" value="no data" />
+
+        }
+
+    </div>
+
+
+}
+
+<script>
+    function saveForward(sender) {
+        $("#Direction").val("forward");
+        document.getElementById("form").submit();
+    }
+
+    function saveBackward(sender) {
+        $("#Direction").val("backward");
+        document.getElementById("form").submit();
+    }
+
+</script>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $('ul.js_choices li input[type="radio"]').on('click', function () {
+                var parentul = $(this).closest('ul.js_choices');
+                $.each(parentul.find('input[type="radio"][name!="' + $(this).attr('name') + '"]:checked'), function (i, e) {
+                    $(e).prop('checked', false);
+                });
+            });
+        })
+
+    </script>
+}
+
+

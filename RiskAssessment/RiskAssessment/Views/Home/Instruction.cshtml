@@ -1,0 +1,27 @@
+﻿@model RiskAssessment.Models.SessionModel
+
+<div class="container">
+
+    <br /><br />
+    <div class="row">
+        <div class="col-md-6">
+            <h2>@ViewBag.AssessmentType</h2>
+
+
+            @ViewBag.AssessmentDescription
+
+        </div>
+    </div>
+
+    @if (Model != null)
+    {
+        using (Html.BeginForm("RiskAssessment", "Home", FormMethod.Post, new { @id = "assessmentRegister" }))
+        {
+            @Html.HiddenFor(x => Model.AssessmentTypeID)
+
+            <a href="javascript:viod(0);" onclick="getElementById('assessmentRegister').submit();" class="btn btn-primary">Start Assessment</a>
+        }
+    }
+
+
+</div>
